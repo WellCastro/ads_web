@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<h1>Exemplos de chamada da API:</h1>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>GET</strong> - Lista com todos os imóveis</h3>
+  </div>
+  <div class="panel-body">
+    <code>curl -X GET "http://localhost:8000/api/property/list/all"</code>
+  </div>
+  <div class="panel-body">
+    <a href="#page">Paginação da API</a>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>GET</strong> - Por ID</h3>
+  </div>
+  <div class="panel-body">
+    <strong>
+      <ul>
+        <li>
+          <code>URL: http://localhost:8000/api/property/list/{ID}</code>
+        </li>
+    </ul>
+    </strong>
+  </div>
+  <div class="panel-body">
+    <code>curl -X GET "http://localhost:8000/api/property/list/160223c1a318e5ba9a8eaa663a07920c" </code>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>GET</strong> - Pesquisa FULL TEXT</h3>
+  </div>
+  <div class="panel-body">
+    <strong>
+      <ul>
+        <li>
+          <code>URL: http://localhost:8000/api/property/list/?search={TÍTULO}</code>
+        </li>
+        <li>
+          Para pesquisar pelo título do imóvel é necessário informa-ló através do parâmetro SEARCH na url
+        </li>
+    </ul>
+    </strong>
+  </div>
+  <div class="panel-body">
+    <code>curl -X GET COM SEARCH curl -X GET "http://localhost:8000/api/property/list/?search=Casa%20para%20Venda%20em%20Bosque%20Maia,%20Guarulhos/SP"</code>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>POST</strong> - Adicionar imóvel</h3>
+  </div>
+  <div class="panel-body">
+    <strong>
+        <ul>
+          <li>
+            <code>URL: http://localhost:8000/api/property/add/</code>
+          </li>
+          <li>
+            Todos os campos no body são obrigatórios.
+          </li>
+          <li>
+            Não é possível criar um imóvel com um ID já existente.
+          </li>
+      </ul>
+    </strong>
+  </div>
+  <div class="panel-body">
+    <code>curl -X POST -H "Content-Type: application/json" -d '{"title": "Casa para Venda em Bosque Maia, Guarulhos/SP","state": "SP","city": "Guarulhos", "name": "Bosque Maia","id_json": "1111","purpose": "Venda","listing_type": "Casa","published_on": "2014-12-23 03:01:51 BRST-0200"}' "http://localhost:8000/api/property/add/"</code>
+  </div>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>PUT</strong> - Editar imóvel</h3>
+  </div>
+  <div class="panel-body">
+    <strong>
+        <ul>
+          <li>
+            <code>URL: http://localhost:8000/api/property/edit/{ID}</code>
+          </li>
+          <li>
+            Todos os campos no body são obrigatórios.
+          </li>
+      </ul>
+    </strong>
+  </div>
+  <div class="panel-body">
+    <code>curl -X PUT -H "Content-Type: application/json" -d '{"title": "Teste Casa para Venda em Bosque Maia, Guarulhos/SP","state": "SP","city": "Guarulhos", "name": "Bosque Maia","id_json": "5e1a08c70fe0abc4af7ad2a49cbc0287","purpose": "Venda","listing_type": "Casa","published_on": "2014-12-23 03:01:51 BRST-0200"}' "http://localhost:8000/api/property/edit/5e1a08c70fe0abc4af7ad2a49cbc0287"</code>
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>Delete</strong> - Por ID</h3>
+  </div>
+  <div class="panel-body">
+    <strong>
+      <ul>
+        <li>
+          <code>URL: http://localhost:8000/api/property/remove/{ID}</code>
+        </li>
+    </ul>
+    </strong>
+  </div>
+  <div class="panel-body">
+    <code>curl -X DELETE "http://localhost:8000/api/property/remove/1111"</code>
+  </div>
+</div>
+
+<div class="panel panel-primary" id="page">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>Paginação</strong> - Toda resposta da API informa os seguintes campos</h3>
+  </div>
+  <div class="panel-body">
+    <strong>
+        <ul>
+          <li>
+            Por padrão o retorno da API é de 100 registros por consulta.
+          </li>
+          <li>
+            <code>Count:</code>Quantidade de registro da consulta.
+          </li>
+          <li>
+            <code>Next:</code>Próxima página da consulta.
+          </li>
+          <li>
+            <code>Previous:</code>Página anterior da consulta.
+          </li>
+      </ul>
+    </strong>
+  </div>
+  <div class="panel-body">
+    <code>Exemplo de retorno:</code>
+    <pre>
+      {"count":1,"next":null,"previous":null,"results":[{"title":"Teste Casa para Venda em Bosque Maia, Guarulhos/SP","name":"Bosque Maia","city":"Guarulhos","state":"SP","id_json":"5e1a08c70fe0abc4af7ad2a49cbc0287","purpose":"Venda","listing_type":"Casa","published_on":"2014-12-23 03:01:51 BRST-0200"}]}
+    </pre>
+  </div>
+</div>
+{% endblock %}
