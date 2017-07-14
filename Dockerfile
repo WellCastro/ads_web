@@ -3,8 +3,6 @@ MAINTAINER Wellington Castro "wcesarc@gmail.com"
 
 RUN apt-get update
 RUN apt-get install -y python-pip
-RUN apt-get install -y libmysqlclient-dev
-
 
 RUN mkdir -p /opt/deploy/ads
 RUN mkdir -p /var/log/ads/webserver/
@@ -17,4 +15,4 @@ WORKDIR /opt/deploy/ads
 
 RUN python manage.py collectstatic --noinput
 
-EXPOSE 8000
+EXPOSE 8002

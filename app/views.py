@@ -2,15 +2,12 @@
 from __future__ import unicode_literals
 
 import requests
-import json
 import logging
 
 from django.views import generic
-from django.conf import settings
-from django.shortcuts import HttpResponse
 
 log = logging.getLogger(__name__)
-URL = "http://localhost:8001/api/property"
+URL = "http://45.55.190.255:8001/api/property"
 
 
 def get_all():
@@ -47,36 +44,6 @@ def count_city():
     return labels
 
 
-def post_table(data):
-    try:
-        requests.post(URL + '/add/', data=data)
-    except Exception, e:
-        log.error('POST error: %r' % data)
-        pass
-
-
-def populate_table():
-    path = settings.BASE_DIR + "/utils/seed.json"
-    json_file = None
-    try:
-        with open(path) as json_data:
-            json_file = json.load(json_data)
-    except Exception, e:
-        print e
-        pass
-
-    for j in json_file:
-        body = {"title": j.get('title'),
-                "state": j.get('location').get('city').get('state'),
-                "city": j.get('location').get('city').get('name'),
-                "name": j.get('location').get('name'),
-                "id_json": j.get('id'),
-                "purpose": j.get('purpose'),
-                "listing_type": j.get('listingType'),
-                "published_on": j.get('published_on')}
-        post_table(body)
-
-
 class Index(generic.TemplateView):
     template_name = "index.html"
 
@@ -90,20 +57,3 @@ class Index(generic.TemplateView):
 
 class Api(generic.TemplateView):
     template_name = "doc.html"
-
-
-def reset(request):
-
-    if request.method == 'GET':
-        try:
-            response_data = {}
-            Property.objects.all().delete()
-            populate_table()
-            response_data['status'] = 'ok'
-        except Exception, e:
-            print e
-
-    return HttpResponse(
-        json.dumps(response_data),
-        content_type="application/json"
-    )
