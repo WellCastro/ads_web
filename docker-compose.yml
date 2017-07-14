@@ -16,8 +16,6 @@ services:
     command: bash -c 'gunicorn ads.wsgi -b 0.0.0.0:8000'
     ports:
        - "82:8002"
-    depends_on:
-      - db
     volumes:
       - ./assets:/static
     expose:
