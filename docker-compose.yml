@@ -9,7 +9,7 @@ services:
       - ./config:/etc/nginx/conf.d
       - ./assets:/static
     depends_on:
-      - web_page
+      - web
   web:
     build: .
     container_name: web_page
