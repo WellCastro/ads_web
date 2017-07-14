@@ -4,7 +4,7 @@ services:
     image: nginx:latest
     container_name: nginx_page
     ports:
-      - "8002:8000"
+      - "8000:8000"
     volumes:
       - ./config:/etc/nginx/conf.d
       - ./assets:/static
@@ -13,10 +13,11 @@ services:
   web:
     build: .
     container_name: web_page
-    command: bash -c 'gunicorn ads_web.wsgi -b 0.0.0.0:8000'
+    command: bash -c 'gunicorn ads_web.wsgi -b 0.0.0.0:8002'
     ports:
-       - "82:8002"
+       - "8002:8002"
     volumes:
       - ./assets:/static
     expose:
-      - "82"
+      - "8002"
+      - "8000"
