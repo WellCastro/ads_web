@@ -4,7 +4,7 @@ services:
     image: nginx:latest
     container_name: nginx_page
     ports:
-      - "8000:8000"
+      - "8002:8002"
     volumes:
       - ./config:/etc/nginx/conf.d
       - ./assets:/static
@@ -20,4 +20,3 @@ services:
       - ./assets:/static
     expose:
       - "8002"
-      - "8000"
