@@ -10,7 +10,7 @@
     <h3 class="panel-title"><strong>GET</strong> - Lista com todos os imóveis</h3>
   </div>
   <div class="panel-body">
-    <code>curl -X GET "http://localhost:8000/api/property/list/all"</code>
+    <code>curl -X GET "http://45.55.190.255:8001/api/property/list/all"</code>
   </div>
   <div class="panel-body">
     <a href="#page">Paginação da API</a>
@@ -24,13 +24,13 @@
     <strong>
       <ul>
         <li>
-          <code>URL: http://localhost:8000/api/property/list/{ID}</code>
+          <code>URL: http://45.55.190.255:8001/api/property/list/{ID}</code>
         </li>
     </ul>
     </strong>
   </div>
   <div class="panel-body">
-    <code>curl -X GET "http://localhost:8000/api/property/list/160223c1a318e5ba9a8eaa663a07920c" </code>
+    <code>curl -X GET "http://45.55.190.255:8001/api/property/list/160223c1a318e5ba9a8eaa663a07920c" </code>
   </div>
 </div>
 
@@ -43,7 +43,7 @@
     <strong>
       <ul>
         <li>
-          <code>URL: http://localhost:8000/api/property/list/?search={TÍTULO}</code>
+          <code>URL: http://45.55.190.255:8001/api/property/list/?search={TÍTULO}</code>
         </li>
         <li>
           Para pesquisar pelo título do imóvel é necessário informa-ló através do parâmetro SEARCH na url
@@ -52,7 +52,7 @@
     </strong>
   </div>
   <div class="panel-body">
-    <code>curl -X GET COM SEARCH curl -X GET "http://localhost:8000/api/property/list/?search=Casa%20para%20Venda%20em%20Bosque%20Maia,%20Guarulhos/SP"</code>
+    <code>curl -X GET COM SEARCH curl -X GET "http://45.55.190.255:8001/api/property/list/?search=Casa%20para%20Venda%20em%20Bosque%20Maia,%20Guarulhos/SP"</code>
   </div>
 </div>
 
@@ -64,7 +64,7 @@
     <strong>
         <ul>
           <li>
-            <code>URL: http://localhost:8000/api/property/add/</code>
+            <code>URL: http://45.55.190.255:8001/api/property/add/</code>
           </li>
           <li>
             Todos os campos no body são obrigatórios.
@@ -76,7 +76,7 @@
     </strong>
   </div>
   <div class="panel-body">
-    <code>curl -X POST -H "Content-Type: application/json" -d '{"title": "Casa para Venda em Bosque Maia, Guarulhos/SP","state": "SP","city": "Guarulhos", "name": "Bosque Maia","id_json": "1111","purpose": "Venda","listing_type": "Casa","published_on": "2014-12-23 03:01:51 BRST-0200"}' "http://localhost:8000/api/property/add/"</code>
+    <code>curl -X POST -H "Content-Type: application/json" -d '{"title": "Casa para Venda em Bosque Maia, Guarulhos/SP","state": "SP","city": "Guarulhos", "name": "Bosque Maia","id_json": "1111","purpose": "Venda","listing_type": "Casa","published_on": "2014-12-23 03:01:51 BRST-0200"}' "http://45.55.190.255:8001/api/property/add/"</code>
   </div>
 </div>
 
@@ -88,7 +88,7 @@
     <strong>
         <ul>
           <li>
-            <code>URL: http://localhost:8000/api/property/edit/{ID}</code>
+            <code>URL: http://45.55.190.255:8001/api/property/edit/{ID}</code>
           </li>
           <li>
             Todos os campos no body são obrigatórios.
@@ -97,7 +97,7 @@
     </strong>
   </div>
   <div class="panel-body">
-    <code>curl -X PUT -H "Content-Type: application/json" -d '{"title": "Teste Casa para Venda em Bosque Maia, Guarulhos/SP","state": "SP","city": "Guarulhos", "name": "Bosque Maia","id_json": "5e1a08c70fe0abc4af7ad2a49cbc0287","purpose": "Venda","listing_type": "Casa","published_on": "2014-12-23 03:01:51 BRST-0200"}' "http://localhost:8000/api/property/edit/5e1a08c70fe0abc4af7ad2a49cbc0287"</code>
+    <code>curl -X PUT -H "Content-Type: application/json" -d '{"title": "Teste Casa para Venda em Bosque Maia, Guarulhos/SP","state": "SP","city": "Guarulhos", "name": "Bosque Maia","id_json": "5e1a08c70fe0abc4af7ad2a49cbc0287","purpose": "Venda","listing_type": "Casa","published_on": "2014-12-23 03:01:51 BRST-0200"}' "http://45.55.190.255:8001/api/property/edit/5e1a08c70fe0abc4af7ad2a49cbc0287"</code>
   </div>
 </div>
 
@@ -109,13 +109,13 @@
     <strong>
       <ul>
         <li>
-          <code>URL: http://localhost:8000/api/property/remove/{ID}</code>
+          <code>URL: http://45.55.190.255:8001/api/property/remove/{ID}</code>
         </li>
     </ul>
     </strong>
   </div>
   <div class="panel-body">
-    <code>curl -X DELETE "http://localhost:8000/api/property/remove/1111"</code>
+    <code>curl -X DELETE "http://45.55.190.255:8001/api/property/remove/1111"</code>
   </div>
 </div>
 
